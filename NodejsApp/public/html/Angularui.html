@@ -1,0 +1,49 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="./employee.js"></script>
+<link rel='stylesheet' href='./angularjsui.css'></link>
+<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="dc.css"/>
+	<script type="text/javascript" src="d3.js"></script>
+<script type="text/javascript" src="crossfilter.js"></script>
+<script type="text/javascript" src="dc.js"></script>
+</head>
+<body>
+ <div class = "employeeDiv" ng-app="employeeApp" ng-controller="empController">
+ <h1>Enter Employee Details</h1>
+   <label class = "item meg_label">First Name <span class="impsign">*</span></label>
+   <input type = "text" placeholder = "Enter Employee Name" class="meg_input" ng-model="emplist.empFName"/>
+
+   <label class = "item meg_label">Last Name </label>
+      <input type = "text" placeholder = "Enter Last Name" class="meg_input" ng-model="emplist.empLName"/>
+   <label class = "item meg_label">Designation <span class="impsign">*</span></label>
+      <select class="meg_input" ng-model="emplist.designation">
+	     <option value="">Select Designation</option>
+		 <option value="SE">Software Engineering</option>
+		 <option value="SSE">Senior Software Engineering</option>
+	  </select>
+   <label class = "item meg_label">Location Name <span class="impsign">*</span></label>
+      <select class="meg_input" ng-model="emplist.locationName">
+	     <option value="">Select Location</option>
+		 <option value="tn">Tamil Nadu</option>
+		 <option value="ap">AP</option>
+	  </select>
+   <label class = "item meg_label">Qualification</label>
+     <select class="meg_input" ng-model="emplist.qualification">
+	     <option value="">Select Qualification</option>
+		 <option value="mca">MCA</option>
+		 <option value="btech">BTech</option>
+	  </select>
+	  <label class = "item meg_label">{{emplist.qualification}} Percentage<span class="impsign">*</span></label>
+      <input type = "text" placeholder = "Enter Percentage" class="meg_input" ng-model="emplist.percentage"/>
+<div class = "buttons">
+      <button class = "button button-right meg-button" ng-click="cancelEmp()">Cancel</button>
+   </div>
+   <div class = "buttons">
+      <button class = "button meg-button" ng-click="saveEmp()">Save</button>
+   </div>
+</div>
+ <div id="chart"></div>
+</body>
+</html>
