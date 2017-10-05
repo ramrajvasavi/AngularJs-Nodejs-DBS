@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Employee Records</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="/js/employee.js"></script>
+<link rel='stylesheet' href='/css/angularjsui.css'></link>
+</head>
+<body ng-app="employeeApp">
+<div ng-controller="employeeDetails">
+<h1>Employee Details</h1><br>
+
+<div id="empDetailsdiv">
+<table>
+<thead style="background-color: #66ff55;">
+<th>EmpFName</th>
+<th>EmpLName</th>
+<th>Designation</th>
+<th>Location</th>
+<th>Qualification</th>
+<th>Percentage</th>
+<th>Edit/Delete</th>
+</thead>
+<tbody>
+<tr ng-repeat="emp in employees track by $index" class="empTr">
+<td><span ng-hide="emp.empId ==  showTd">{{emp.empFName}}</span><input type='text' ng-hide="emp.empId !== showTd" ng-model='emp.empFName' /></td>
+<td><span ng-hide="emp.empId ==  showTd">{{emp.empLName}}</span><input type='text' ng-hide="emp.empId !== showTd" ng-model='emp.empLName' /></td>
+<td><span ng-hide="emp.empId ==  showTd">{{emp.designation}}</span><input type='text' ng-hide="emp.empId !== showTd" ng-model='emp.designation' /></td>
+<td><span ng-hide="emp.empId ==  showTd">{{emp.locationName}}</span><input type='text' ng-hide="emp.empId !== showTd" ng-model='emp.locationName' /></td>
+<td><span ng-hide="emp.empId ==  showTd">{{emp.qualification}}</span><input type='text' ng-hide="emp.empId !== showTd" ng-model='emp.qualification' /></td>
+<td><span ng-hide="emp.empId ==  showTd">{{emp.percentage}}</span><input type='text' ng-hide="emp.empId !== showTd" ng-model='emp.percentage' /></td>
+<td><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="editEmp($index)"></i> <i class="fa fa-trash-o" aria-hidden="true" ng-click="deleteEmp($index)"></i></td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</body>
+</html>
