@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee Filters</title>
+    <meta charset="UTF-8">
+	<!-- inculde all required css and js files -->
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="dc.css"/>
+	<script type="text/javascript" src="d3.js"></script>
+	<script type="text/javascript" src="crossfilter.js"></script>
+	<script type="text/javascript" src="dc.js"></script>
+	<style>
+	.container{
+		margin:0.5% auto;
+	}
+	.container .charts {
+		margin: 20px;
+    }
+	</style>
+</head>
+<body>
+<!-- create container to display charts -->
+<div class="container">
+<h1> Employees Joined Charts</h1>
+<!-- create placeholders to display charts -->
+<div id="chart-ring-year" class="charts"><span style="color:green;font-size:18px;">Year wise Employees Joined</span><div class="reset" style="visibility: hidden;">
+<a href="javascript:yearRingChart.filterAll();dc.redrawAll();">reset</a></div><br></div>
+<div id="chart-row-emps" class="charts"><span style="color:chocolate;font-size:18px;">Qualification wise Employees Joined</span>
+<div class="reset" style="visibility: hidden;"><a href="javascript:spenderRowChart.filterAll();dc.redrawAll();">reset</a></div><br></div>
+<div id="chart-month-emp" class="charts"><span style="color:pink;font-size:18px;">Month wise employees joined</span>
+<div class="reset" style="visibility: hidden;"><a href="javascript:monthRowChart.filterAll();dc.redrawAll();">reset</a></div><br></div>
+
+<!-- logic to display charts  based on employee data -->
+<script type="text/javascript">
+var yearRingChart   = dc.pieChart("#chart-ring-year"),
+    spenderRowChart = dc.rowChart("#chart-row-emps");
+	monthRowChart = dc.barChart("#chart-month-emp");
+var joinedData = [
+	{qualification: 'MCA', joined: '40', month:'Jan', Year: 2015},
+	{qualification: 'MCA', joined: '20', month:'Mar', Year: 2015},
+	{qualification: 'MCA', joined: '10', month:'Aug', Year: 2015},
+	{qualification: 'MCA', joined: '30', month:'Feb', Year: 2015},
+	{qualification: 'MCA', joined: '50', month:'Sep', Year: 2015},
+	{qualification: 'MCA', joined: '5', month:'Dec', Year: 2015},
+	{qualification: 'MCA', joined: '4', month:'Nov', Year: 2015},
+	{qualification: 'MTech', joined: '10', month:'Mar', Year: 2015},
+	{qualification: 'MTech', joined: '5', month:'Dec', Year: 2015},
+	{qualification: 'MTech', joined: '20', month:'Jun', Year: 2015},
+	{qualification: 'MTech', joined: '2', month:'July', Year: 2015},
+	{qualification: 'MTech', joined: '15', month:'May', Year: 2015},
+	{qualification: 'MTech', joined: '20', month:'Feb', Year: 2015},
+	 {qualification: 'BTech', joined: '2', month:'Jan', Year: 2015},
+	 {qualification: 'BTech', joined: '3', month:'Feb', Year: 2015},
+	 {qualification: 'BTech', joined: '1', month:'Apr', Year: 2015},
+	 {qualification: 'BTech', joined: '10', month:'Mar', Year: 2015},
+	 {qualification: 'BTech', joined: '25', month:'Jul', Year: 2015},
+	 {qualification: 'BTech', joined: '30', month:'May', Year: 2015},
+	 {qualification: 'BTech', joined: '2', month:'Jun', Year: 2015},
+	 {qualification: 'BTech', joined: '20', month:'Oct', Year: 2015},
+	 {qualification: 'BTech', joined: '2', month:'Sep', Year: 2015},
+	{qualification: 'BTech', joined: '20', month:'Aug', Year: 2015},
+	{qualification: 'BTech', joined: '50', month:'Nov', Year: 2015},
+	{qualification: 'BTech', joined: '3', month:'Dec', Year: 2015},
+	{qualification: 'MCA', joined: '70', month:'Jan', Year: 2016},
+	{qualification: 'MCA', joined: '20', month:'Mar', Year: 2016},
+	{qualification: 'MCA', joined: '30', month:'Feb', Year: 2016},
+	{qualification: 'MCA', joined: '15', month:'May', Year: 2016},
+	{qualification: 'MCA', joined: '5', month:'Nov', Year: 2016},
+	{qualification: 'MCA', joined: '2', month:'Jan', Year: 2016},
+	{qualification: 'MCA', joined: '3', month:'Sep', Year: 2016},
+	{qualification: 'MCA', joined: '5', month:'Dec', Year: 2016},
+    {qualification: 'MTech', joined: '20', month:'Jan', Year: 2016},
+    {qualification: 'MTech', joined: '10', month:'Dec', Year: 2016},
+    {qualification: 'MTech', joined: '5', month:'Apr', Year: 2016},
+	{qualification: 'MTech', joined: '6', month:'Jul', Year: 2016},
+	{qualification: 'MTech', joined: '20', month:'Dec', Year: 2016},
+	{qualification: 'MTech', joined: '50', month:'Nov', Year: 2016},
+	{qualification: 'MTech', joined: '50', month:'Jan', Year: 2017},
+	{qualification: 'MTech', joined: '2', month:'Jul', Year: 2017},
+	{qualification: 'MTech', joined: '60', month:'Sep', Year: 2017},
+	{qualification: 'MTech', joined: '3', month:'Nov', Year: 2017}, 
+    {qualification: 'BTech', joined: '30', month:'Jan', Year: 2017},
+    {qualification: 'BTech', joined: '20', month:'Feb', Year: 2017},
+	{qualification: 'BTech', joined: '15', month:'Mar', Year: 2017},
+	{qualification: 'BTech', joined: '5', month:'Apr', Year: 2017},
+	{qualification: 'BTech', joined: '25', month:'Jul', Year: 2017},
+	{qualification: 'BTech', joined: '50', month:'May', Year: 2017},
+];
+<!-- here parsing data based on joined count -->
+joinedData.forEach(function(d) {
+    d.joined = d.joined.match(/\d+/);	
+});
+// set crossfilter
+var ndx = crossfilter(joinedData),
+    yearDim  = ndx.dimension(function(d) {return +d.Year;}),//  creating dimentions based on year
+    qualDim  = ndx.dimension(function(d) {return d.qualification;}), //  creating dimentions based on qualification
+	monthDim  = ndx.dimension(function(d) {return d.month;}), //  creating dimentions based on month
+    spendPerYear = yearDim.group().reduceSum(function(d) {return +d.joined;}), // grouping employees year wise joined
+    spendPerquali = qualDim.group().reduceSum(function(d) {return +d.joined;}), // grouping employees qualification wise joined
+	spendmon = monthDim.group().reduceSum(function(d) {return +d.joined;}); // grouping employees month wise joined
+	
+// pie chart - displaying data based on years
+yearRingChart
+    .width(330).height(200) // passing width and height 
+    .dimension(yearDim)
+    .group(spendPerYear)
+    .innerRadius(50)
+	 .controlsUseVisibility(true);
+// Row Chart - displaing data based on qualification
+spenderRowChart
+    .width(350).height(150)
+    .dimension(qualDim)
+    .group(spendPerquali)
+    .elasticX(true)
+	 .controlsUseVisibility(true);
+	// Row Chart - displaying data based on months
+	monthRowChart
+    .width(450).height(200)
+    .dimension(monthDim)
+    .group(spendmon)
+	.x(d3.scale.ordinal())
+    .xUnits(dc.units.ordinal)
+    .elasticX(true)
+	.elasticY(true)
+	 .controlsUseVisibility(true);// this function is used to display reset button or not
+	monthRowChart.xAxis().tickFormat(function(d) {return d}); //drawing X axis and y axis
+	monthRowChart.yAxis().ticks(2);
+dc.renderAll();
+</script>
+
+</div>
+</body>
+</html>

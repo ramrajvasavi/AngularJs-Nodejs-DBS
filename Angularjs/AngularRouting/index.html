@@ -1,0 +1,25 @@
+<html ng-app="myApp">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-resource.js"></script>
+  </head>
+  <body>
+    <script type="text/ng-template" id="blog.html">
+      <h1>Blog</h1>
+      <h3>{{message}}</h3>
+    </script>
+    <script type="text/ng-template" id="about.html">
+      <h1>About</h1>
+      <h3>{{message}}</h3>
+    </script>
+
+    <a href="#/login">Login</a>
+    <a href="#/blog">Blog</a>
+    <a href="#/about">About</a>
+
+    <div ng-view></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
