@@ -1,0 +1,49 @@
+<ion-view view-title="Order">
+  <ion-content>
+   <h5>Welcome to Order Page</h5>
+  <div class = "orderlist">
+   
+   <label class = "item meg_label">Consumer <span class="impsign">*</span></label>
+      <select class="meg_input" ng-model="orderlist.consumer">
+	     <option value="">Select Consumer</option>
+		 <option value="vodafone">Vodafone</option>
+		  <option value="vodafone">Vodafone</option>
+		 <option value="bsnl">BSNL</option>
+	  </select>
+
+
+   <label class = "item meg_label">External Ref </label>
+      <input type = "text" placeholder = "Enter External Ref" class="meg_input" ng-model="orderlist.externalRef"/>
+   <label class = "item meg_label">Product Name <span class="impsign">*</span></label>
+      <select class="meg_input" ng-model="orderlist.productName">
+	     <option value="">Select Product</option>
+		 <option value="sim">SIM</option>
+		 <option value="data">Data</option>
+	  </select>
+   <label class = "item meg_label">Location Name <span class="impsign">*</span></label>
+      <select class="meg_input" ng-model="orderlist.locationName">
+	     <option value="">Select Location</option>
+		 <option value="tn">Tamil Nadu</option>
+		 <option value="ap">AP</option>
+	  </select>
+   <label class = "item meg_label">Quantity <span class="impsign">*</span></label>
+      <input type = "text" placeholder = "Enter Quantity" class="meg_input" ng-model="orderlist.quantity"/>
+   <label class = "item meg_label">POS</label>
+     <select class="meg_input" ng-model="orderlist.posId">
+	     <option value="">Select POS</option>
+		 <option value="1">1</option>
+		 <option value="2">2</option>
+	  </select>
+	<label class = "item meg_label">UOM</label>
+     <input type = "text" placeholder = "Enter UOM" class="meg_input" ng-model="orderlist.uom"/>
+	<label class = "item meg_label">Amount <span class="impsign">*</span></label>
+     <input type = "text" placeholder = "Enter Amount" class="meg_input" ng-model="orderlist.amount"/>
+<div class = "buttons">
+      <button class = "button button-right meg-button" ng-click="cancelOrder()">Cancel</button>
+   </div>
+   <div class = "buttons">
+      <button class = "button meg-button" ng-click="saveOrder()">Save</button>
+   </div>
+</div>
+  </ion-content>
+</ion-view>

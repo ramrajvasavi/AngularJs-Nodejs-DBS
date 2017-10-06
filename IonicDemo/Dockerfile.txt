@@ -1,0 +1,24 @@
+# docker file for nodejs app
+FROM node
+
+MAINTAINER RRVramprasad
+
+#WORKDIR C:\Users\ramprasad.gadamsetty\Desktop\RRV\Magellan\Exercises\AngularjsApp\AngularjsApp
+
+COPY package.json .
+
+RUN npm install -g cordova ionic
+
+RUN npm install cordova ionic
+
+RUN npm install
+
+RUN ionic start ionicDemo tabs
+
+COPY . .
+
+EXPOSE 8100 35729
+
+WORKDIR ionicDemo
+
+CMD [ "ionic", "serve", "--all", "--port", "8100", "--livereload-port", "35729" ]

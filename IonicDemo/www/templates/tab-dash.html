@@ -1,0 +1,35 @@
+<ion-view view-title="Search Order">
+  <ion-content class="padding">
+   <h5>Search Order</h5>
+  <div>
+     <label class = "item meg_label">Order Id: </label>
+      <input type = "text" placeholder = "Enter External Ref" class="meg_input" ng-model="stat.status"/>
+   <div class = "buttons">
+      <button class = "button meg-button" ng-click="getOrder()">Send</button>
+   </div><br><br><br>
+   <div class="">
+	<ion-item class="item-remove-animate item-icon-right" ng-repeat="order in ordersList" id={{order.orderID}} type="item-text-wrap" href="#/tab/dash/{{order.orderID}}">
+			<div class="prodName">{{order.productName}}</div>
+			<div class="qty_amount"><div style="float:left;">Quantity: {{order.quantity}}</div><div style="float:right;"> Amount: {{order.amount}}</div></div>
+		<i class="icon ion-chevron-right icon-accessory"></i>
+		</ion-item>
+   </div>
+   <button ion-button color="secondary" round>Secondary Round</button>
+   
+   <ion-list>
+
+  <ion-item>
+    <ion-label fixed>Username</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+</ion-list>
+</div>
+  </ion-content>
+  
+</ion-view>
