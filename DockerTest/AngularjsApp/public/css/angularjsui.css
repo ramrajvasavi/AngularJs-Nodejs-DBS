@@ -1,0 +1,70 @@
+/* Empty. Add your own CSS if you like */
+
+.employeeDiv{
+   width: 358px;
+   height: 445px;
+   margin:0px auto;
+   border:1px solid #58585A;
+   border-radius:5px;
+   background:green;
+}
+h1{
+	text-align: center;
+    color: darkgoldenrod;
+}
+.meg_input{
+   width: 96%;
+   height:32px;
+   padding:5px;
+   border:1px solid #58585A !important;
+   border-radius:5px;
+   margin: 0px 6px;
+   
+}
+.impsign{
+   color:red;
+   margin-right:5px;
+}
+
+.meg_label{
+  margin: 9px 6px;
+  padding: 1px;
+  border:0px;
+  color: white;
+  font-size: 18px;
+}
+.meg-button{
+ height:32px;
+ padding:5px;
+ background:steelblue;
+ border: 0px;
+ width: 65px;
+ color:white;
+}
+.meg-button:hover{
+	background:lightblue;
+	color:black;
+}
+.buttons{
+  float:right;
+  display:	inline-block;
+  margin:5px;
+}
+.prodName{
+	font-size:1.2em;
+}
+.orderslist {
+    height: 44px;
+    margin: 10px 0px;
+    border: 1px solid #58585A;
+}
+.chartBtn{
+	border:none;
+	width:100px;
+	height:20px;
+	padding:5px;
+	cursor:pointer;
+	background: darkgreen;
+	text-align:center;
+	color: white;
+}

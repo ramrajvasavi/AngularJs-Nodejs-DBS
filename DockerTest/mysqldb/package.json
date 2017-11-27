@@ -1,0 +1,18 @@
+{
+  "name": "nodejsmysql",
+  "version": "1.0.0",
+  "description": "A beginner's work",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "mysql": "^2.12.0",
+	"cookie-parser": "^1.3.3",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "fs": "0.0.1-security",
+    "hashmap": "^2.1.0",
+    "jade": "^1.11.0",
+    "morgan": "^1.6.1",
+	"request": "^2.60.0"
+  }
+}

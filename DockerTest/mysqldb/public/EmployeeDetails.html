@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Employee Records</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="/js/employee.js"></script>
+<link rel='stylesheet' href='/css/angularjsui.css'></link>
+</head>
+<body ng-app="employeeApp">
+<div ng-controller="employeeDetails">
+<h1>Employee Details</h1><br>
+<!--<ul class="empdetails">
+<li ng-repeat="emp in employees" class="empli">
+<div>
+<span>{{emp.empFName+" "+emp.empLName}}</span>
+</div>
+</li>
+</ul> -->
+
+<div id="empDetailsdiv">
+<table>
+<thead>
+<th>EmpFName</th>
+<th>EmpLName</th>
+<th>Designation</th>
+<th>Location</th>
+<th>Qualification</th>
+<th>Percentage</th>
+</thead>
+<tbody>
+<tr ng-repeat="emp in employees" class="empTr">
+<td>{{emp.empFName}}</td>
+<td>{{emp.empLName}}</td>
+<td>{{emp.designation}}</td>
+<td>{{emp.locationName}}</td>
+<td>{{emp.qualification}}</td>
+<td>{{emp.percentage}}</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</body>
+</html>

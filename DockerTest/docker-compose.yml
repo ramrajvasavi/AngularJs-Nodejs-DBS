@@ -1,0 +1,20 @@
+version: '2'
+services:
+  nodeapplicationtest:
+    build: ./AngularjsApp
+    ports:
+      - "3000:3000"
+  
+  sqlapplication:
+    build: ./mysqldb
+    ports:
+        - "3030:3030"
+    links:
+        - db
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - "3308:3308"
+    environment:
+        MYSQL_ROOT_PASSWORD: root

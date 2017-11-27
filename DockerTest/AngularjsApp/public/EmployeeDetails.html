@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Employee Records</title>
+<script src="/js/employee.js"></script>
+<link rel='stylesheet' href='/css/angularjsui.css'></link>
+</head>
+<body>
+<div ng-controller="employeeDetails()">
+<h1>EMployee Details</h1>
+<ul class="empdetails">
+<li ng-repeat="emp in employees" class="empli">
+<div>
+<span>{{emp.empFName+" "+emp.empLName}}</span>
+</div>
+</li>
+</ul>
+</div>
+</body>
+</html>

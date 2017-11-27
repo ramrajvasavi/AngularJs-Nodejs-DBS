@@ -1,0 +1,50 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="/js/employee.js"></script>
+<link rel='stylesheet' href='/css/angularjsui.css'></link>
+</head>
+<body>
+ <div class = "employeeDiv" ng-app="employeeApp" ng-controller="empController">
+ <h1>Enter Employee Details</h1>
+   <label class = "item meg_label">First Name</label>
+   <input type = "text" placeholder = "Enter Employee Name" class="meg_input" ng-model="emplist.empFName"/>
+
+   <label class = "item meg_label">Last Name </label>
+      <input type = "text" placeholder = "Enter Last Name" class="meg_input" ng-model="emplist.empLName"/>
+   <label class = "item meg_label">Designation</label>
+      <select class="meg_input" ng-model="emplist.designation">
+	     <option value="">Select Designation</option>
+		 <option value="SE">Software Engineering</option>
+		 <option value="SSE">Senior Software Engineering</option>
+		  <option value="SSE">Team Lead</option>
+	  </select>
+   <label class = "item meg_label">Location Name</label>
+      <select class="meg_input" ng-model="emplist.locationName">
+	     <option value="">Select Location</option>
+		 <option value="tn">Tamil Nadu</option>
+		 <option value="ap">AP</option>
+		 <option value="ka">KA</option>
+	  </select>
+   <label class = "item meg_label">Qualification</label>
+     <select class="meg_input" ng-model="emplist.qualification">
+	     <option value="">Select Qualification</option>
+		 <option value="MCA">MCA</option>
+		 <option value="BTech">BTech</option>
+		 <option value="MTech">MTech</option>
+	  </select>
+	  <label class = "item meg_label">{{emplist.qualification}} Percentage</label>
+      <input type = "text" placeholder = "Enter Percentage" class="meg_input" ng-model="emplist.percentage"/>
+<div class = "buttons">
+      <button class = "button button-right meg-button" ng-click="cancelEmp()">Cancel</button>
+   </div>
+   <div class = "buttons">
+      <button class = "button meg-button" ng-click="saveEmp()">Save</button>
+   </div>
+   <div linear-chart charts="employees"></div>
+</div>
+
+
+</body>
+</html>
